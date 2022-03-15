@@ -37,7 +37,8 @@ export const check = (guess, word) => {
         }
     }
 
-    console.log(output, tmpWord)
+    console.log(output)
     return output;
 };
 check(guess, word);
+export default check;
