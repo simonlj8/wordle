@@ -1,42 +1,43 @@
 let guess = "hallå";
-let word =  "cykla";
+let word = "cykla";
 
 export const check = (guess, word) => {
     let g = guess.toUpperCase().split('');
-    let w = word.toUpperCase().split('');     
-    let output = [];  
-    let output2 = [];  
+    let w = word.toUpperCase().split('');
+    let output = [];
+    let output2 = [];
     let tmpWord = word.toUpperCase().split('');
-    
+
 
     for (let i = 0; i < tmpWord.length; i++) {
         if (g[i] === w[i]) {
             output[i] = {
-            letter: g[i],
-            result: "Correct"};
+                letter: g[i],
+                result: "Correct"
+            };
 
             tmpWord[i] = "!"
-            output2.push(i)                                 
+            output2.push(i)
+        }
     }
-}
-    for (let i = 0; i < w.length; i++){
-       
+    for (let i = 0; i < w.length; i++) {
         if (!output2.includes(i)) {
-        console.log(tmpWord, w, g)             
-        
-           if (tmpWord.includes(g[i])) {
-            output[i] = { letter: g[i], result: "Missplaced"}
+            if (tmpWord.includes(g[i])) {
+                output[i] = {
+                    letter: g[i],
+                    result: "Missplaced"
+                }
             }
-           if (!tmpWord.includes(g[i])) {
-            //if (g[i] != tmpWord[i] && tmpWord.includes(i)){
-                output[i] = { letter: g[i], result: "Incorrect"}
-    }}
+            if (!tmpWord.includes(g[i])) {
+                output[i] = {
+                    letter: g[i],
+                    result: "Incorrect"
+                }
+            }
+        }
     }
-    
-    
+
     console.log(output, tmpWord)
     return output;
-
 };
-
 check(guess, word);
