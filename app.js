@@ -1,80 +1,42 @@
+let guess = "hallå";
+let word =  "cykla";
 
-
-let guess = "HALLÅ";
-let word =  "CYKLA";
-
-
-let check = (guess, word) => {
-    let guessLetter = guess.split('');
-    let wordLetter = word.split('');
-    let output = [];
-    //let correctButNotRight = [];
-    for (let i = 0; i < guessLetter.length; i++) {
-        if (guessLetter[i] === wordLetter[i]) {
-            output.push( {
-                letter: guessLetter[i],
-                result: "correct",
-               
-            });
-            
-        }
-        else if (word.includes(guessLetter[i])) {
-            output.push( {
-                letter: guessLetter[i],
-                result: "misplaced",
-            });
-        } else {
-            output.push({
-                letter: guessLetter[i],
-                result: "incorrect",
-            });
-        }
-        
-       // let guessLetter = guess.charAt(i);
-       // let wordLetter = word.charAt(i);
-}
-console.log(output);
-return output;
-}
-
-
-/*
-let check = (guess, word) => {
- 
-    let output = [];
-    //let correctButNotRight = [];
-
-for (let i = 0; i < guess.length; i++) {
-   
-    let guessLetter = guess.charAt(i);
-    let wordLetter = word.charAt(i);
-
+export const check = (guess, word) => {
+    let g = guess.toUpperCase().split('');
+    let w = word.toUpperCase().split('');     
+    let output = [];  
+    let output2 = [];  
+    let tmpWord = word.toUpperCase().split('');
     
-    let output = [];
-    //let correctButNotRight = [];
-    if (guessLetter === wordLetter) {
-      output.push( {
-          letter: guessLetter[i],
-          result: "Right",
-      });
+
+    for (let i = 0; i < tmpWord.length; i++) {
+        if (g[i] === w[i]) {
+            output[i] = {
+            letter: g[i],
+            result: "Correct"};
+
+            tmpWord[i] = "!"
+            output2.push(i)                                 
     }
-    else if (word.indexOf(guessLetter) != -1) {
-      output.push( {
-          letter: guessLetter[i],
-          result: "missplaced",
-      });
-    }
-    else {
-      output.push({
-          letter: guessLetter,
-          result: "fail",
-      });
-   
-    }
-    console.log(output);
 }
-console.log(output);
-  return output;
-}*/
-    check(guess, word);
-   // module.exports = check;
+    for (let i = 0; i < w.length; i++){
+       
+        if (!output2.includes(i)) {
+        console.log(tmpWord, w, g)             
+        
+           if (tmpWord.includes(g[i])) {
+            output[i] = { letter: g[i], result: "Missplaced"}
+            }
+           if (!tmpWord.includes(g[i])) {
+            //if (g[i] != tmpWord[i] && tmpWord.includes(i)){
+                output[i] = { letter: g[i], result: "Incorrect"}
+    }}
+    }
+    
+    
+    console.log(output, tmpWord)
+    return output;
+
+};
+
+check(guess, word);
