@@ -9,7 +9,7 @@ export const check = (guess, word) => {
     let tmpWord = word.toUpperCase().split('');
 
 
-    for (let i = 0; i < tmpWord.length; i++) {
+    for (let i = 0; i < w.length; i++) {
         if (g[i] === w[i]) {
             output[i] = {
                 letter: g[i],
