@@ -1,7 +1,7 @@
 let guess = "hallå";
 let word = "cykla";
 
-export const check = (guess, word) => {
+export const check = (guess, word) => { 
     let g = guess.toUpperCase().split('');
     let w = word.toUpperCase().split('');
     let output = [];
